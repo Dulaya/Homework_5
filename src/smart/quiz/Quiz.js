@@ -22,17 +22,17 @@ export function Quiz() {
   const checkAnswer = (
     userInputIndex, 
     correctAnswerIndex,
-    _setBackground,
+    setBackground,
     wrongColor
     ) => {
 
     if (userInputIndex === correctAnswerIndex) {
       alert('Correct!');
-      _setBackground('green');
+      setBackground('green');
     }
     else {
       alert('Wrong answer.');
-      _setBackground(wrongColor);
+      setBackground(wrongColor);
     }
     
   };
