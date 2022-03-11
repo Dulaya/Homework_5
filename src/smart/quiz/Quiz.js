@@ -3,11 +3,7 @@ import {QuizView} from './Quiz.view';
 
 export function Quiz() {
 
-  const [state, setState] = useState({
-    background: 'red'
-  });
-
-  const { background } = state;
+  const [background, setBackground] = useState();
 
   // mock
   const mockData = {
@@ -21,39 +17,30 @@ export function Quiz() {
     correctAnswer: 0,
   };
 
-  const { correctAnswer } = mockData;
-
-  const green = '#00C897';
-
   // This function is passed down to <Button/ > component in Quiz.view.js
-  const checkAnswer = index => {
+  const checkAnswer = (
+    answerIndex, 
+    correctAnswerIndex,
+    _setBackground,
+    wrongColor
+    ) => {
 
-    // console.log("I'm checking the answer", index);
-
-    if (index === correctAnswer) {
+    if (answerIndex === correctAnswerIndex) {
       alert('Correct!');
-      // Change state to green
-      setState(prevState => ({
-        ...prevState, 
-        background: green,
-      }));
+      _setBackground('green');
     }
-
     else {
       alert('Wrong answer.');
-      // Change state to red
-      setState(prevState => ({
-        ...prevState, 
-        background: 'red',
-      }));
+      _setBackground(wrongColor);
     }
-
+    
   };
 
   return <>
        <QuizView 
        data={mockData} 
-       press={checkAnswer}  
+       checkAnswer={checkAnswer}  
+       setBackground={setBackground}
        background={background}
        />
   </>;
