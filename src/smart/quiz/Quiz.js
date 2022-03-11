@@ -7,25 +7,26 @@ export function Quiz() {
 
   // mock
   const mockData = {
-    question: 'What const is doing?',
+    question: 'Which method add new element at end of array?',
     answers: [
-      'Create variable',
-      'define function',
-      'Shot down computer',
-      'And one more stupid idea',
+      '.push()',
+      '.map()',
+      '.concat()',
+      '.reduce()',
+      '.add()'
     ],
     correctAnswer: 0,
   };
 
   // This function is passed down to <Button/ > component in Quiz.view.js
   const checkAnswer = (
-    answerIndex, 
+    userInputIndex, 
     correctAnswerIndex,
     _setBackground,
     wrongColor
     ) => {
 
-    if (answerIndex === correctAnswerIndex) {
+    if (userInputIndex === correctAnswerIndex) {
       alert('Correct!');
       _setBackground('green');
     }
